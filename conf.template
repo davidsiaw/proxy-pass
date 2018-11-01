@@ -8,7 +8,7 @@ server {
         server_name  ${VIRTUAL_HOST};
         location / {
             proxy_pass         http://${TARGET_HOST};
-            proxy_redirect     off;
+            proxy_redirect     on;
 
             proxy_set_header   Host             ${TARGET_HOST};
             proxy_set_header   X-Real-IP        ${DOLLAR}remote_addr;
