@@ -3,14 +3,16 @@ map ${DOLLAR}http_upgrade ${DOLLAR}connection_upgrade {
         ''      close;
 }
 
+client_max_body_size 0;
+chunked_transfer_encoding on;
+
 server {
         listen       80;
         server_name  ${VIRTUAL_HOST};
         location / {
             proxy_pass         http://${TARGET_HOST};
-            proxy_redirect     default;
 
-            proxy_set_header   Host             ${TARGET_HOST};
+            proxy_set_header   Host             ${VIRTUAL_HOST};
             proxy_set_header   X-Real-IP        ${DOLLAR}remote_addr;
             proxy_set_header   X-Forwarded-For  ${DOLLAR}proxy_add_x_forwarded_for;
 
