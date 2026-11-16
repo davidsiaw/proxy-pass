@@ -94,6 +94,7 @@ jobs:
         with:
           scan-type: config
           scan-ref: .
+          trivyignores: .trivyignore
           format: sarif
           output: trivy-config.sarif
 
@@ -164,7 +165,7 @@ jobs:
         id: osv
         run: |
           set +e
-          osv-scanner scan image --archive image.tar --format sarif --output osv.sarif
+          osv-scanner scan image --archive image.tar --format sarif --output-file osv.sarif
           echo "exit_code=$?" >> "$GITHUB_OUTPUT"
           osv-scanner scan image --archive image.tar --format table
           exit 0
