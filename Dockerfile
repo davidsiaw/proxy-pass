@@ -1,8 +1,8 @@
 FROM nginx:1.30.5-alpine
-MAINTAINER David Siaw davidsiaw@gmail.com
+LABEL maintainer="David Siaw <davidsiaw@gmail.com>"
 
-ENV VIRTUAL_HOST example.example.com
-ENV TARGET_HOST example.com
+ENV VIRTUAL_HOST=example.example.com
+ENV TARGET_HOST=example.com
 
 COPY conf.template /conf.template
 COPY start.sh /start.sh
